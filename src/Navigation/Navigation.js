@@ -21,4 +21,5 @@ const NavBar = styled.nav`
     padding: 20px 0 30px 0;
     background-color: #7ea0b7;
     color: white;
+    z-index: 20;
 `

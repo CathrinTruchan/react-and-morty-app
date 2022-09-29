@@ -21,7 +21,7 @@ const CardArticle = styled.article`
 `
 
 const CardSection = styled.section`
-    padding: 10px 0 30px 0;
+    padding: 30px 0 30px 0;
     background-color: #36494e;
     color: white;
     margin-top: -5px;
@@ -34,6 +34,7 @@ const CardButton = styled.button`
     color: #36494e;
     font-weight: bold;
     border-radius: 10px;
+    margin-top: 20px;
 
     &:hover {
         background-color: #a9cef4;
