@@ -1,9 +1,12 @@
 import './App.css'
+import styled from 'styled-components'
 
 function App() {
     return (
         <div className="App">
-            <header>React and Morty App</header>
+            <Header>
+                <h1>React and Morty App</h1>
+            </Header>
             <article>
                 <img
                     src="https://rickandmortyapi.com/api/character/avatar/2.jpeg"
@@ -25,3 +28,11 @@ function App() {
 }
 
 export default App
+
+const Header = styled.header`
+    background-color: #7ea0b7;
+    padding: 10px;
+    margin-bottom: 20px;
+    color: white;
+    box-shadow: 4px 2px 5px #597081;
+`
