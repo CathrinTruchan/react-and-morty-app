@@ -1,5 +1,6 @@
 import './App.css'
 import styled from 'styled-components'
+import Card from './Card/Card'
 
 function App() {
     return (
@@ -7,16 +8,9 @@ function App() {
             <Header>
                 <h1>React and Morty App</h1>
             </Header>
-            <article>
-                <img
-                    src="https://rickandmortyapi.com/api/character/avatar/2.jpeg"
-                    alt="Morty Smith"
-                ></img>
-                <section>
-                    <h2>Morty Smith</h2>
-                    <button>Show more</button>
-                </section>
-            </article>
+            <main>
+                <Card />
+            </main>
             <nav>
                 <div>Home</div>
                 <div>Random</div>
