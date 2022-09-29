@@ -18,6 +18,13 @@ export default function Card() {
 const CardArticle = styled.article`
     width: 300px;
     box-shadow: 4px 2px 5px #7ea0b7;
+    transform: scale(1,1)
+    transition: 1s, ease-in-out;
+    transition-delay: 0.1s;
+    &:hover{
+    transform: scale(1.01,1.01)
+    
+    }
 `
 
 const CardSection = styled.section`
