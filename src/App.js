@@ -5,7 +5,7 @@ import Navigation from './Navigation/Navigation'
 
 function App() {
     return (
-        <div className="App">
+        <div>
             <Header>
                 <h1>React and Morty App</h1>
             </Header>
@@ -27,10 +27,12 @@ const Header = styled.header`
     position: fixed;
     top: 0;
     left: 0;
+    left: 0;
     z-index: 30;
     background-color: #7ea0b7;
     padding: 20px;
     margin-bottom: 20px;
     color: white;
     box-shadow: 4px 2px 5px #597081;
+    text-align: center;
 `

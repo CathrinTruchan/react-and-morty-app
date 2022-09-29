@@ -25,6 +25,7 @@ const CardSection = styled.section`
     background-color: #36494e;
     color: white;
     margin-top: -5px;
+    text-align: center;
 `
 
 const CardButton = styled.button`
