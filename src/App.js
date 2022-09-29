@@ -1,6 +1,7 @@
 import './App.css'
 import styled from 'styled-components'
 import Card from './Card/Card'
+import Navigation from './Navigation/Navigation'
 
 function App() {
     return (
@@ -11,12 +12,7 @@ function App() {
             <main>
                 <Card />
             </main>
-            <nav>
-                <div>Home</div>
-                <div>Random</div>
-                <div>Favorites</div>
-                <div>Get creative</div>
-            </nav>
+            <Navigation />
         </div>
     )
 }
