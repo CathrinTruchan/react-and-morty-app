@@ -26,6 +26,17 @@ const initialCharacters = [
 ]
 
 function App() {
+    async function fetchCharacters() {
+        const response = await fetch(
+            'https://rickandmortyapi.com/api/character'
+        )
+        const data = await response.json()
+        const fetchedCharacters = data.results
+        console.log(fetchedCharacters)
+    }
+
+    fetchCharacters()
+
     return (
         <div>
             <Header>
