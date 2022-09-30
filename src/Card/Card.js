@@ -1,6 +1,15 @@
+import { useState } from 'react'
 import styled from 'styled-components'
 
 export default function Card() {
+    const [showDetails, setShowDetails] = useState(false)
+
+    function toggleDetails() {
+        if (showDetails) {
+            return setShowDetails(false)
+        } else return setShowDetails(true)
+    }
+
     return (
         <CardArticle>
             <img
@@ -8,8 +17,19 @@ export default function Card() {
                 alt="Morty Smith"
             ></img>
             <CardSection>
-                <h2>Morty Smith</h2>
-                <CardButton>Show more</CardButton>
+                <CharacterHeadline>Morty Smith</CharacterHeadline>
+                {showDetails && (
+                    <div>
+                        <CharacterInfo>Status: Alive</CharacterInfo>
+                        <CharacterInfo>Species: Human </CharacterInfo>
+                        <CharacterInfo>Gender: Male </CharacterInfo>
+                        <CharacterInfo>Origin: Earth</CharacterInfo>
+                        <CharacterInfo>Location: Citadel</CharacterInfo>
+                    </div>
+                )}
+                <CardButton onClick={toggleDetails}>
+                    {showDetails ? 'Show less' : 'Show more'}
+                </CardButton>
             </CardSection>
         </CardArticle>
     )
@@ -18,13 +38,12 @@ export default function Card() {
 const CardArticle = styled.article`
     width: 300px;
     box-shadow: 4px 2px 5px #7ea0b7;
-    transform: scale(1,1)
-    transition: 1s, ease-in-out;
-    transition-delay: 0.1s;
-    &:hover{
-    transform: scale(1.01,1.01)
-    
-    }
+    transform: scale(1, 1);
+    //transition: 1s, ease-in-out;
+
+    //&:hover {
+    //    transform: scale(1.01, 1.01);
+    // }
 `
 
 const CardSection = styled.section`
@@ -42,9 +61,17 @@ const CardButton = styled.button`
     color: #36494e;
     font-weight: bold;
     border-radius: 10px;
-    margin-top: 20px;
+    margin-top: 1.5rem;
 
     &:hover {
         background-color: #a9cef4;
     }
+`
+
+const CharacterInfo = styled.p`
+    margin-top: 0.8rem;
+`
+
+const CharacterHeadline = styled.h2`
+    margin-bottom: 1.5rem;
 `

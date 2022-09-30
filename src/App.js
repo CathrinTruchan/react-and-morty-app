@@ -2,6 +2,28 @@ import './App.css'
 import styled from 'styled-components'
 import Card from './Card/Card'
 import Navigation from './Navigation/Navigation'
+import { nanoid } from 'nanoid'
+
+const initialCharacters = [
+    {
+        id: nanoid(),
+        Name: 'name',
+        Status: 'status',
+        Species: 'species',
+        Gender: 'gender',
+        Origin: 'origin',
+        Location: 'location',
+    },
+    {
+        id: nanoid(),
+        Name: 'name',
+        Status: 'status',
+        Species: 'species',
+        Gender: 'gender',
+        Origin: 'origin',
+        Location: 'location',
+    },
+]
 
 function App() {
     return (
@@ -23,7 +45,7 @@ function App() {
 export default App
 
 const Header = styled.header`
-    width: 100%    
+    width: 100%;
     position: fixed;
     top: 0;
     left: 0;
