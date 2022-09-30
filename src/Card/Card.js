@@ -1,7 +1,15 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 
-export default function Card() {
+export default function Card({
+    name,
+    status,
+    species,
+    gender,
+    origin,
+    location,
+    img,
+}) {
     const [showDetails, setShowDetails] = useState(false)
 
     function toggleDetails() {
@@ -12,19 +20,16 @@ export default function Card() {
 
     return (
         <CardArticle>
-            <img
-                src="https://rickandmortyapi.com/api/character/avatar/2.jpeg"
-                alt="Morty Smith"
-            ></img>
+            <img src={img} alt={name}></img>
             <CardSection>
-                <CharacterHeadline>Morty Smith</CharacterHeadline>
+                <CharacterHeadline>{name}</CharacterHeadline>
                 {showDetails && (
                     <div>
-                        <CharacterInfo>Status: Alive</CharacterInfo>
-                        <CharacterInfo>Species: Human </CharacterInfo>
-                        <CharacterInfo>Gender: Male </CharacterInfo>
-                        <CharacterInfo>Origin: Earth</CharacterInfo>
-                        <CharacterInfo>Location: Citadel</CharacterInfo>
+                        <CharacterInfo>Status: {status}</CharacterInfo>
+                        <CharacterInfo>Species: {species} </CharacterInfo>
+                        <CharacterInfo>Gender: {gender} </CharacterInfo>
+                        <CharacterInfo>Origin: {origin}</CharacterInfo>
+                        <CharacterInfo>Location: {location}</CharacterInfo>
                     </div>
                 )}
                 <CardButton onClick={toggleDetails}>

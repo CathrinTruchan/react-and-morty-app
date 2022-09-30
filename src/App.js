@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Card from './Card/Card'
 import Navigation from './Navigation/Navigation'
 import { nanoid } from 'nanoid'
+import { useEffect, useState } from 'react'
 
 const initialCharacters = [
     {
@@ -26,16 +27,20 @@ const initialCharacters = [
 ]
 
 function App() {
+    const [characters, setCharacters] = useState([])
+
     async function fetchCharacters() {
         const response = await fetch(
             'https://rickandmortyapi.com/api/character'
         )
         const data = await response.json()
         const fetchedCharacters = data.results
-        console.log(fetchedCharacters)
+        setCharacters(fetchedCharacters)
     }
 
-    fetchCharacters()
+    useEffect(() => {
+        fetchCharacters()
+    }, [])
 
     return (
         <div>
@@ -43,10 +48,18 @@ function App() {
                 <h1>React and Morty App</h1>
             </Header>
             <main className="card-container">
-                <Card />
-                <Card />
-                <Card />
-                <Card />
+                {characters.map((character) => (
+                    <Card
+                        name={character.name}
+                        status={character.status}
+                        species={character.species}
+                        gender={character.gender}
+                        origin={character.origin.name}
+                        location={character.location.name}
+                        img={character.image}
+                        key={character.id}
+                    />
+                ))}
             </main>
             <Navigation />
         </div>
