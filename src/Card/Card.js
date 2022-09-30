@@ -53,7 +53,7 @@ const CardArticle = styled.article`
 `
 
 const CardSection = styled.section`
-    padding: 30px 0 30px 0;
+    padding: 30px 20px 30px 20px;
     color: white;
     margin-top: -5px;
     text-align: center;
