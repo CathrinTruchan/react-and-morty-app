@@ -38,7 +38,8 @@ export default function Card() {
 const CardArticle = styled.article`
     width: 300px;
     box-shadow: 4px 2px 5px #7ea0b7;
-    transform: scale(1, 1);
+    background-color: #36494e;
+    //transform: scale(1, 1);
     //transition: 1s, ease-in-out;
 
     //&:hover {
@@ -48,7 +49,6 @@ const CardArticle = styled.article`
 
 const CardSection = styled.section`
     padding: 30px 0 30px 0;
-    background-color: #36494e;
     color: white;
     margin-top: -5px;
     text-align: center;
