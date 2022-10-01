@@ -10,11 +10,33 @@ function App() {
     const [characters, setCharacters] = useState([])
     const [favorite, setFavorite] = useState(false)
 
+    console.log(characters[0])
+
     function toggleFavorite() {
         if (favorite) {
             return setFavorite(false)
         } else return setFavorite(true)
     }
+
+    // Saves STATE for all cards --> need to add favorite state to characters
+    // useEffect(() => {
+    //     localStorage.setItem('favorite', JSON.stringify(favorite))
+    // }, [favorite])
+
+    // useEffect(() => {
+    //     JSON.parse(localStorage.getItem('favorite'))
+    // }, [])
+
+    // DID NOT WORK
+    // useEffect(
+    //     () =>
+    //         setCharacters((prev) =>
+    //             prev.map((item) => {
+    //                 return { ...item, favorite: 'false' }
+    //             })
+    //         ),
+    //     []
+    // )
 
     async function fetchCharacters() {
         const response = await fetch(
@@ -22,6 +44,7 @@ function App() {
         )
         const data = await response.json()
         const fetchedCharacters = data.results
+        fetchedCharacters.favorites = 'a string'
         setCharacters(fetchedCharacters)
     }
 
