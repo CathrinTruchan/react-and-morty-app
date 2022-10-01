@@ -1,7 +1,6 @@
 import './App.css'
 import styled from 'styled-components'
 import Navigation from './Navigation/Navigation'
-import { nanoid } from 'nanoid'
 import { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Cards from './Pages/Cards'
@@ -9,6 +8,13 @@ import DetailCard from './Card/DetailCard'
 
 function App() {
     const [characters, setCharacters] = useState([])
+    const [favorite, setFavorite] = useState(false)
+
+    function toggleFavorite() {
+        if (favorite) {
+            return setFavorite(false)
+        } else return setFavorite(true)
+    }
 
     async function fetchCharacters() {
         const response = await fetch(
@@ -38,7 +44,13 @@ function App() {
                     />
                     <Route
                         path="/character/:CharacterID"
-                        element={<DetailCard characters={characters} />}
+                        element={
+                            <DetailCard
+                                characters={characters}
+                                toggleFavorite={toggleFavorite}
+                                favorite={favorite}
+                            />
+                        }
                     />
                 </Routes>
             </main>

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { useParams } from 'react-router-dom'
 import { useState } from 'react'
 
-export default function DetailCard({ characters }) {
+export default function DetailCard({ characters, toggleFavorite, favorite }) {
     const { CharacterID } = useParams()
     const [showDetails, setShowDetails] = useState(true)
 
@@ -16,6 +16,12 @@ export default function DetailCard({ characters }) {
         .filter((character) => character.id == CharacterID)
         .map((character) => (
             <CardArticle key={character.id}>
+                <FavButton
+                    onClick={toggleFavorite}
+                    style={{
+                        backgroundColor: favorite ? '#8f2d56' : '#95AFBA',
+                    }}
+                ></FavButton>
                 <img src={character.image} alt={character.name}></img>
                 <CardSection>
                     <CharacterHeadline>{character.name}</CharacterHeadline>
@@ -52,6 +58,7 @@ const CardArticle = styled.article`
     background-color: #36494e;
     transform: scale(1, 1);
     transition: 1s, ease-in-out;
+    position: relative;
 
     &:hover {
         transform: scale(1.01, 1.01);
@@ -71,7 +78,7 @@ const CardSection = styled.section`
 const CardButton = styled.button`
     width: 60%;
     align-self: center;
-    background-color: white;
+    background-color: #e5e5e5;
     border: none;
     padding: 10px;
     color: #36494e;
@@ -92,4 +99,14 @@ const CharacterInfo = styled.p`
 
 const CharacterHeadline = styled.h2`
     margin-bottom: 1rem;
+`
+const FavButton = styled.button`
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: #95afba;
+    border-radius: 50%;
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    border: none;
 `
