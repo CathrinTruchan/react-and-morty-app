@@ -1,30 +1,11 @@
 import './App.css'
 import styled from 'styled-components'
-import Card from './Card/Card'
 import Navigation from './Navigation/Navigation'
 import { nanoid } from 'nanoid'
 import { useEffect, useState } from 'react'
-
-const initialCharacters = [
-    {
-        id: nanoid(),
-        Name: 'name',
-        Status: 'status',
-        Species: 'species',
-        Gender: 'gender',
-        Origin: 'origin',
-        Location: 'location',
-    },
-    {
-        id: nanoid(),
-        Name: 'name',
-        Status: 'status',
-        Species: 'species',
-        Gender: 'gender',
-        Origin: 'origin',
-        Location: 'location',
-    },
-]
+import { Routes, Route } from 'react-router-dom'
+import Cards from './Pages/Cards'
+import DetailCard from './Card/DetailCard'
 
 function App() {
     const [characters, setCharacters] = useState([])
@@ -47,20 +28,21 @@ function App() {
             <Header>
                 <h1>React and Morty App</h1>
             </Header>
+
             <main className="card-container">
-                {characters.map((character) => (
-                    <Card
-                        name={character.name}
-                        status={character.status}
-                        species={character.species}
-                        gender={character.gender}
-                        origin={character.origin.name}
-                        location={character.location.name}
-                        img={character.image}
-                        key={character.id}
+                <Routes>
+                    <Route
+                        exact
+                        path="/"
+                        element={<Cards characters={characters} />}
                     />
-                ))}
+                    <Route
+                        path="/character/:CharacterID"
+                        element={<DetailCard characters={characters} />}
+                    />
+                </Routes>
             </main>
+
             <Navigation />
         </div>
     )
