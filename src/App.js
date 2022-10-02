@@ -7,7 +7,9 @@ import Cards from './Pages/Cards'
 import DetailCard from './Card/DetailCard'
 
 function App() {
-    const [characters, setCharacters] = useState([])
+    const [characters, setCharacters] = useState(() => {
+        return JSON.parse(localStorage.getItem('characters')) ?? []
+    })
 
     async function fetchCharacters() {
         const response = await fetch(
@@ -23,6 +25,15 @@ function App() {
 
     useEffect(() => {
         fetchCharacters()
+    }, [])
+
+    useEffect(() => {
+        return localStorage.setItem('characters', JSON.stringify(characters))
+    }, [characters])
+
+    useEffect(() => {
+        const storageCharacters = JSON.parse(localStorage.getItem('characters'))
+        setCharacters(storageCharacters)
     }, [])
 
     function toggleFavorites(cardID) {
