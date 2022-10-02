@@ -19,7 +19,7 @@ function App() {
         const data = await response.json()
         const fetchedCharacters = data.results
         const newFetchedCharacters = fetchedCharacters.map((item) => {
-            return { ...item, favorite: false, showDetails: false }
+            return { ...item, favorite: false, showDetails: true }
         })
         setCharacters(newFetchedCharacters)
     }

@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { useParams } from 'react-router-dom'
-import { useState } from 'react'
 
 export default function DetailCard({
     characters,
@@ -10,7 +9,7 @@ export default function DetailCard({
     const { CharacterID } = useParams()
 
     return characters
-        .filter((character) => character.id.toString() == CharacterID)
+        .filter((character) => character.id.toString() === CharacterID)
         .map((character) => (
             <CardArticle key={character.id}>
                 <FavButton

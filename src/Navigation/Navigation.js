@@ -41,14 +41,14 @@ const NavLinkElement = styled(NavLink)`
 `
 
 const HomeIcon = styled(FaHome)`
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: white;
     &:hover {
         color: #36494e;
     }
 `
 const RandomIcon = styled(FaRandom)`
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: white;
     &:hover {
         color: #36494e;
@@ -56,14 +56,14 @@ const RandomIcon = styled(FaRandom)`
 `
 
 const FavoriteIcon = styled(FaHeart)`
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: white;
     &:hover {
         color: #36494e;
     }
 `
 const CreativeIcon = styled(FaPaintBrush)`
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: white;
     &:hover {
         color: #36494e;
