@@ -19,7 +19,7 @@ function App() {
         const data = await response.json()
         const fetchedCharacters = data.results
         const newFetchedCharacters = fetchedCharacters.map((item) => {
-            return { ...item, favorite: true, showDetails: false }
+            return { ...item, favorite: false, showDetails: false }
         })
         setCharacters(newFetchedCharacters)
     }
@@ -96,9 +96,16 @@ function App() {
                             />
                         }
                     />
+                    <Route
+                        path="/random"
+                        element={<Cards characters={characters} />}
+                    />
+                    <Route
+                        path="/getcreative"
+                        element={<Cards characters={characters} />}
+                    />
                 </Routes>
             </main>
-
             <Navigation />
         </div>
     )

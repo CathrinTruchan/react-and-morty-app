@@ -1,12 +1,13 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export default function Navigation() {
     return (
         <NavBar>
-            <div>Home</div>
-            <div>Random</div>
-            <div>Favorites</div>
-            <div>Get creative</div>
+            <Link to="/">Home</Link>
+            <Link to="random">Random</Link>
+            <Link to="/favorite">Favorites</Link>
+            <Link to="getcreative">Get creative</Link>
         </NavBar>
     )
 }
