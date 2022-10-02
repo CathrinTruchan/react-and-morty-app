@@ -1,14 +1,15 @@
 import './App.css'
 import styled from 'styled-components'
 import Navigation from './Navigation/Navigation'
-import { nanoid } from 'nanoid'
 import { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Cards from './Pages/Cards'
 import DetailCard from './Card/DetailCard'
 
 function App() {
-    const [characters, setCharacters] = useState([])
+    const [characters, setCharacters] = useState(() => {
+        return JSON.parse(localStorage.getItem('characters')) ?? []
+    })
 
     async function fetchCharacters() {
         const response = await fetch(
@@ -16,12 +17,34 @@ function App() {
         )
         const data = await response.json()
         const fetchedCharacters = data.results
-        setCharacters(fetchedCharacters)
+        const newFetchedCharacters = fetchedCharacters.map((item) => {
+            return { ...item, favorite: false }
+        })
+        setCharacters(newFetchedCharacters)
     }
 
     useEffect(() => {
         fetchCharacters()
     }, [])
+
+    useEffect(() => {
+        return localStorage.setItem('characters', JSON.stringify(characters))
+    }, [characters])
+
+    useEffect(() => {
+        const storageCharacters = JSON.parse(localStorage.getItem('characters'))
+        setCharacters(storageCharacters)
+    }, [])
+
+    function toggleFavorites(cardID) {
+        setCharacters(
+            characters.map((character) => {
+                if (cardID === character.id) {
+                    return { ...character, favorite: !character.favorite }
+                } else return character
+            })
+        )
+    }
 
     return (
         <div>
@@ -38,7 +61,12 @@ function App() {
                     />
                     <Route
                         path="/character/:CharacterID"
-                        element={<DetailCard characters={characters} />}
+                        element={
+                            <DetailCard
+                                characters={characters}
+                                toggleFavorites={toggleFavorites}
+                            />
+                        }
                     />
                 </Routes>
             </main>
