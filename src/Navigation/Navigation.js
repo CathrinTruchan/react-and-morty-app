@@ -1,13 +1,22 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import { FaHome, FaRandom, FaHeart, FaPaintBrush } from 'react-icons/fa'
 
 export default function Navigation() {
     return (
         <NavBar>
-            <Link to="/">Home</Link>
-            <Link to="random">Random</Link>
-            <Link to="/favorite">Favorites</Link>
-            <Link to="getcreative">Get creative</Link>
+            <NavLinkElement to="/" end>
+                <HomeIcon />
+            </NavLinkElement>
+            <NavLinkElement to="random">
+                <RandomIcon />
+            </NavLinkElement>
+            <NavLinkElement to="/favorite">
+                <FavoriteIcon />
+            </NavLinkElement>
+            <NavLinkElement to="getcreative">
+                <CreativeIcon />
+            </NavLinkElement>
         </NavBar>
     )
 }
@@ -23,4 +32,40 @@ const NavBar = styled.nav`
     background-color: #7ea0b7;
     color: white;
     z-index: 20;
+`
+
+const NavLinkElement = styled(NavLink)`
+    &.active {
+        border-bottom: 4px solid white;
+    }
+`
+
+const HomeIcon = styled(FaHome)`
+    font-size: 2rem;
+    color: white;
+    &:hover {
+        color: #36494e;
+    }
+`
+const RandomIcon = styled(FaRandom)`
+    font-size: 2rem;
+    color: white;
+    &:hover {
+        color: #36494e;
+    }
+`
+
+const FavoriteIcon = styled(FaHeart)`
+    font-size: 2rem;
+    color: white;
+    &:hover {
+        color: #36494e;
+    }
+`
+const CreativeIcon = styled(FaPaintBrush)`
+    font-size: 2rem;
+    color: white;
+    &:hover {
+        color: #36494e;
+    }
 `
