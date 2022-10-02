@@ -2,18 +2,15 @@ import styled from 'styled-components'
 import { useParams } from 'react-router-dom'
 import { useState } from 'react'
 
-export default function DetailCard({ characters, toggleFavorites }) {
+export default function DetailCard({
+    characters,
+    toggleFavorites,
+    toggleDetails,
+}) {
     const { CharacterID } = useParams()
-    const [showDetails, setShowDetails] = useState(true)
-
-    function toggleDetails() {
-        if (showDetails) {
-            return setShowDetails(false)
-        } else return setShowDetails(true)
-    }
 
     return characters
-        .filter((character) => character.id == CharacterID)
+        .filter((character) => character.id.toString() == CharacterID)
         .map((character) => (
             <CardArticle key={character.id}>
                 <FavButton
@@ -27,7 +24,7 @@ export default function DetailCard({ characters, toggleFavorites }) {
                 <img src={character.image} alt={character.name}></img>
                 <CardSection>
                     <CharacterHeadline>{character.name}</CharacterHeadline>
-                    {showDetails && (
+                    {character.showDetails && (
                         <div>
                             <CharacterInfo>
                                 Status: {character.status}
@@ -46,8 +43,8 @@ export default function DetailCard({ characters, toggleFavorites }) {
                             </CharacterInfo>
                         </div>
                     )}
-                    <CardButton onClick={toggleDetails}>
-                        {showDetails ? 'Show less' : 'Show more'}
+                    <CardButton onClick={() => toggleDetails(character.id)}>
+                        {character.showDetails ? 'Show less' : 'Show more'}
                     </CardButton>
                 </CardSection>
             </CardArticle>
