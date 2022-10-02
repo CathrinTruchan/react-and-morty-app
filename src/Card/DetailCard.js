@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { useParams } from 'react-router-dom'
 import { useState } from 'react'
 
-export default function DetailCard({ characters, toggleFavorite, favorite }) {
+export default function DetailCard({ characters, toggleFavorites }) {
     const { CharacterID } = useParams()
     const [showDetails, setShowDetails] = useState(true)
 
@@ -17,9 +17,11 @@ export default function DetailCard({ characters, toggleFavorite, favorite }) {
         .map((character) => (
             <CardArticle key={character.id}>
                 <FavButton
-                    onClick={toggleFavorite}
+                    onClick={() => toggleFavorites(character.id)}
                     style={{
-                        backgroundColor: favorite ? '#8f2d56' : '#95AFBA',
+                        backgroundColor: character.favorite
+                            ? '#8f2d56'
+                            : '#95AFBA',
                     }}
                 ></FavButton>
                 <img src={character.image} alt={character.name}></img>

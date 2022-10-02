@@ -8,35 +8,6 @@ import DetailCard from './Card/DetailCard'
 
 function App() {
     const [characters, setCharacters] = useState([])
-    const [favorite, setFavorite] = useState(false)
-
-    console.log(characters[0])
-
-    function toggleFavorite() {
-        if (favorite) {
-            return setFavorite(false)
-        } else return setFavorite(true)
-    }
-
-    // Saves STATE for all cards --> need to add favorite state to characters
-    // useEffect(() => {
-    //     localStorage.setItem('favorite', JSON.stringify(favorite))
-    // }, [favorite])
-
-    // useEffect(() => {
-    //     JSON.parse(localStorage.getItem('favorite'))
-    // }, [])
-
-    // DID NOT WORK
-    // useEffect(
-    //     () =>
-    //         setCharacters((prev) =>
-    //             prev.map((item) => {
-    //                 return { ...item, favorite: 'false' }
-    //             })
-    //         ),
-    //     []
-    // )
 
     async function fetchCharacters() {
         const response = await fetch(
@@ -44,13 +15,25 @@ function App() {
         )
         const data = await response.json()
         const fetchedCharacters = data.results
-        fetchedCharacters.favorites = 'a string'
-        setCharacters(fetchedCharacters)
+        const newFetchedCharacters = fetchedCharacters.map((item) => {
+            return { ...item, favorite: false }
+        })
+        setCharacters(newFetchedCharacters)
     }
 
     useEffect(() => {
         fetchCharacters()
     }, [])
+
+    function toggleFavorites(cardID) {
+        setCharacters(
+            characters.map((character) => {
+                if (cardID === character.id) {
+                    return { ...character, favorite: !character.favorite }
+                } else return character
+            })
+        )
+    }
 
     return (
         <div>
@@ -70,8 +53,7 @@ function App() {
                         element={
                             <DetailCard
                                 characters={characters}
-                                toggleFavorite={toggleFavorite}
-                                favorite={favorite}
+                                toggleFavorites={toggleFavorites}
                             />
                         }
                     />
