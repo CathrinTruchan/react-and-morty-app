@@ -3,8 +3,9 @@ import styled from 'styled-components'
 import Navigation from './Navigation/Navigation'
 import { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import Cards from './Pages/Cards'
+import Cards from './Card/Cards'
 import DetailCard from './Card/DetailCard'
+import FavoriteCards from './Card/FavoriteCards'
 
 function App() {
     const [characters, setCharacters] = useState(() => {
@@ -18,7 +19,7 @@ function App() {
         const data = await response.json()
         const fetchedCharacters = data.results
         const newFetchedCharacters = fetchedCharacters.map((item) => {
-            return { ...item, favorite: false }
+            return { ...item, favorite: true, showDetails: false }
         })
         setCharacters(newFetchedCharacters)
     }
@@ -46,6 +47,22 @@ function App() {
         )
     }
 
+    function toggleDetails(cardID) {
+        setCharacters(
+            characters.map((character) => {
+                if (cardID === character.id) {
+                    return { ...character, showDetails: !character.showDetails }
+                } else return character
+            })
+        )
+    }
+
+    function showFavoritesOnly() {
+        return characters.filter((character) => character.favorite === true)
+    }
+
+    const favCharacters = showFavoritesOnly()
+
     return (
         <div>
             <Header>
@@ -65,6 +82,17 @@ function App() {
                             <DetailCard
                                 characters={characters}
                                 toggleFavorites={toggleFavorites}
+                                toggleDetails={toggleDetails}
+                            />
+                        }
+                    />
+                    <Route
+                        path="/favorite"
+                        element={
+                            <FavoriteCards
+                                characters={favCharacters}
+                                toggleFavorites={toggleFavorites}
+                                toggleDetails={toggleDetails}
                             />
                         }
                     />
