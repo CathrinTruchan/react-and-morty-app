@@ -6,6 +6,7 @@ import { Routes, Route } from 'react-router-dom'
 import Cards from './Card/Cards'
 import DetailCard from './Card/DetailCard'
 import FavoriteCards from './Card/FavoriteCards'
+import RandomCard from './Card/RandomCard'
 
 function App() {
     const [characters, setCharacters] = useState(() => {
@@ -98,7 +99,7 @@ function App() {
                     />
                     <Route
                         path="/random"
-                        element={<Cards characters={characters} />}
+                        element={<RandomCard characters={characters} />}
                     />
                     <Route
                         path="/getcreative"
