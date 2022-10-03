@@ -1,6 +1,36 @@
 import { createGlobalStyle } from 'styled-components'
-
 const GlobalStyle = createGlobalStyle`
+
+
+
+
+/* dosis-regular - latin */
+@font-face {
+  font-family: 'Dosis';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../Fonts/dosis-v27-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('../Fonts/dosis-v27-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../Fonts/dosis-v27-latin-regular.woff') format('woff'), /* Modern Browsers */
+  
+}
+
+/* dosis-500 - latin */
+@font-face {
+  font-family: 'Dosis';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../Fonts/dosis-v27-latin-500.eot'); /* IE9 Compat Modes */
+  src: local(''),
+  
+       url('../Fonts/dosis-v27-latin-500.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../Fonts/dosis-v27-latin-500.woff') format('woff'), /* Modern Browsers */
+  
+}
+
+
+
 
 * {
     box-sizing: border-box;
@@ -10,12 +40,10 @@ const GlobalStyle = createGlobalStyle`
 
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-        'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-        'Helvetica Neue', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Dosis', sans-serif;
 }
+
+
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
