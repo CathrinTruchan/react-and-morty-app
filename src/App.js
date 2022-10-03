@@ -3,10 +3,10 @@ import styled from 'styled-components'
 import Navigation from './Navigation/Navigation'
 import { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import Cards from './Card/Cards'
-import DetailCard from './Card/DetailCard'
-import FavoriteCards from './Card/FavoriteCards'
-import RandomCard from './Card/RandomCard'
+import Cards from './Pages/Cards'
+import DetailCard from './Pages/DetailCard'
+import FavoriteCards from './Pages/FavoriteCards'
+import RandomCard from './Pages/RandomCard'
 
 function App() {
     const [characters, setCharacters] = useState(() => {

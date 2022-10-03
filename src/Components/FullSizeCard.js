@@ -1,46 +1,48 @@
 import styled from 'styled-components'
 
-export default function FavoriteCards({
-    characters,
+export default function FullSizeCard({
+    id,
+    favorite,
+    image,
+    name,
+    status,
+    species,
+    gender,
+    origin,
+    location,
+    showDetails,
     toggleFavorites,
     toggleDetails,
 }) {
-    return characters.map((character) => (
-        <CardArticle key={character.id}>
+    return (
+        <CardArticle key={id}>
             <FavButton
-                onClick={() => toggleFavorites(character.id)}
+                onClick={() => toggleFavorites(id)}
                 style={{
-                    backgroundColor: character.favorite ? '#8f2d56' : '#95AFBA',
+                    backgroundColor: favorite ? '#8f2d56' : '#95AFBA',
                 }}
             ></FavButton>
-            <img src={character.image} alt={character.name}></img>
+
+            <img src={image} alt={name}></img>
+
             <CardSection>
-                <CharacterHeadline>{character.name}</CharacterHeadline>
-                {character.showDetails && (
+                <CharacterHeadline>{name}</CharacterHeadline>
+                {showDetails && (
                     <div>
-                        <CharacterInfo>
-                            Status: {character.status}
-                        </CharacterInfo>
-                        <CharacterInfo>
-                            Species: {character.species}
-                        </CharacterInfo>
-                        <CharacterInfo>
-                            Gender: {character.gender}
-                        </CharacterInfo>
-                        <CharacterInfo>
-                            Origin: {character.origin.name}
-                        </CharacterInfo>
-                        <CharacterInfo>
-                            Location: {character.location.name}
-                        </CharacterInfo>
+                        <CharacterInfo>Status: {status}</CharacterInfo>
+                        <CharacterInfo>Species: {species}</CharacterInfo>
+                        <CharacterInfo>Gender: {gender}</CharacterInfo>
+                        <CharacterInfo>Origin: {origin}</CharacterInfo>
+                        <CharacterInfo>Location: {location}</CharacterInfo>
                     </div>
                 )}
-                <CardButton onClick={() => toggleDetails(character.id)}>
-                    {character.showDetails ? 'Show less' : 'Show more'}
+
+                <CardButton onClick={() => toggleDetails(id)}>
+                    {showDetails ? 'Show Less' : 'Show more'}
                 </CardButton>
             </CardSection>
         </CardArticle>
-    ))
+    )
 }
 
 const CardArticle = styled.article`
