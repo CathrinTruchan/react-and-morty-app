@@ -75,7 +75,9 @@ function App() {
                     <Route
                         exact
                         path="/"
-                        element={<Cards characters={characters} />}
+                        element={
+                            <Cards characters={characters} smallSize={true} />
+                        }
                     />
                     <Route
                         path="/character/:CharacterID"
@@ -84,6 +86,7 @@ function App() {
                                 characters={characters}
                                 toggleFavorites={toggleFavorites}
                                 toggleDetails={toggleDetails}
+                                smallSize={false}
                             />
                         }
                     />
@@ -94,12 +97,18 @@ function App() {
                                 characters={favCharacters}
                                 toggleFavorites={toggleFavorites}
                                 toggleDetails={toggleDetails}
+                                smallSize={false}
                             />
                         }
                     />
                     <Route
                         path="/random"
-                        element={<RandomCard characters={characters} />}
+                        element={
+                            <RandomCard
+                                characters={characters}
+                                smallSize={true}
+                            />
+                        }
                     />
                     <Route
                         path="/getcreative"

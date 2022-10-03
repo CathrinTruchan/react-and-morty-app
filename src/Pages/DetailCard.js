@@ -1,17 +1,18 @@
 import { useParams } from 'react-router-dom'
-import FullSizeCard from '../Components/FullSizeCard'
+import CardComponent from '../Components/CardComponent'
 
 export default function DetailCard({
     characters,
     toggleFavorites,
     toggleDetails,
+    smallSize,
 }) {
     const { CharacterID } = useParams()
 
     return characters
         .filter((character) => character.id.toString() === CharacterID)
         .map((character) => (
-            <FullSizeCard
+            <CardComponent
                 toggleDetails={toggleDetails}
                 toggleFavorites={toggleFavorites}
                 id={character.id}
@@ -24,6 +25,7 @@ export default function DetailCard({
                 origin={character.origin.name}
                 showDetails={character.showDetails}
                 favorite={character.favorite}
+                smallSize={smallSize}
             />
         ))
 }
