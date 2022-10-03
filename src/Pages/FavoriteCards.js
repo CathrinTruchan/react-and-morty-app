@@ -1,12 +1,13 @@
-import FullSizeCard from '../Components/FullSizeCard'
+import CardComponent from '../Components/CardComponent'
 
 export default function FavoriteCards({
     characters,
     toggleFavorites,
     toggleDetails,
+    smallSize,
 }) {
     return characters.map((character) => (
-        <FullSizeCard
+        <CardComponent
             toggleDetails={toggleDetails}
             toggleFavorites={toggleFavorites}
             id={character.id}
@@ -19,6 +20,7 @@ export default function FavoriteCards({
             origin={character.origin.name}
             showDetails={character.showDetails}
             favorite={character.favorite}
+            smallSize={smallSize}
         />
     ))
 }

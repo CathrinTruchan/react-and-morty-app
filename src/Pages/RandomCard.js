@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 import { useState } from 'react'
 import { FaQuestion } from 'react-icons/fa'
-import Card from '../Components/Card'
+import CardComponent from '../Components/CardComponent'
 
-export default function RandomCard({ characters }) {
+export default function RandomCard({ characters, smallSize }) {
     const [randomNumber, setRandomNumber] = useState('')
 
     function onClick() {
@@ -18,10 +18,11 @@ export default function RandomCard({ characters }) {
                 characters.map((character) => {
                     if (character.id === randomNumber) {
                         return (
-                            <Card
+                            <CardComponent
                                 id={character.id}
                                 name={character.name}
                                 image={character.image}
+                                smallSize={smallSize}
                             />
                         )
                     }

@@ -1,7 +1,12 @@
-import Card from '../Components/Card'
+import CardComponent from '../Components/CardComponent'
 
-export default function Cards({ characters }) {
+export default function Cards({ characters, smallSize }) {
     return characters.map((character) => (
-        <Card id={character.id} name={character.name} image={character.image} />
+        <CardComponent
+            id={character.id}
+            name={character.name}
+            image={character.image}
+            smallSize={smallSize}
+        />
     ))
 }
