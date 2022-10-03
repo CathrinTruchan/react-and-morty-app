@@ -1,3 +1,7 @@
+import { createGlobalStyle } from 'styled-components'
+
+const GlobalStyle = createGlobalStyle`
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -25,3 +29,7 @@ code {
     justify-content: center;
     margin: 120px 0 100px 0;
 }
+
+
+`
+export default GlobalStyle
