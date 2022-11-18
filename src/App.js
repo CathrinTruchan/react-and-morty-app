@@ -68,6 +68,7 @@ function App() {
         <div>
             <Header>
                 <h1>React and Morty App</h1>
+                <p>test</p>
             </Header>
 
             <main className="card-container">
